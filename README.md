@@ -136,5 +136,73 @@ resource "aws_instance" "new" {
   }
 }
 
+Variable.tf 
+
+variable "instance_type" {
+    type        =  string
+    default     = "t2.micro"
+}
+
+variable "instance_username" {
+  type = string
+  default = "new"
+}
+
+variable "aws_instance_new_ami_id" {
+    type = string
+    default = "ami-050d94cbfc76a73bf"
+}    
+
+variable "key_type" {
+    type = string
+    default = "Access-key"
+}
+
+variable "vpc_cidr_block" {
+  type        = string
+  default     = "192.164.0.0/24"
+   description = "The IPv4 CIDR block for the VPC"
+}
+
+variable "private_subnets" {
+  type = map(number)
+  default = {
+    "us-east-2a" = 1
+  }
+  description = "Map of AZ to a number that should be used for private subnets"
+}
+
+## Public Subnet CIDR BLOCK
+variable "public_subnets" {
+  type = map(number)
+  default = {
+    "us-east-2a" = 1
+  }
+  description = "Map of AZ to a number that should be used for public subnets"
+}
+
+variable "public_Subnet_1_cidr_block" {
+    type = string
+    default = "192.164.0.0/25"
+}
+
+variable "private_Subnet_2_cidr_block" {
+    type = string
+    default = "192.164.0.128/25"
+}
+
+variable "aws_vpc_main_id" {
+    type = string
+    default = "vpc-00c0ccdb3a6fde17e"
+}
+
+variable "public_crt_cidr_block" {
+    type = string
+    default = "0.0.0.0/0"  
+}
+
+  
+
+
 
 
